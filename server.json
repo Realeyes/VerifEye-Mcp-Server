@@ -3,7 +3,7 @@
   "name": "ai.realeyes/verifeye",
   "title": "VerifEye",
   "description": "VerifEye Face API: Identify (apparent age, gender, emotions, attention), Onboard and Compare faces.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "websiteUrl": "https://verifeye-docs.realeyes.ai/verifeye-apis/mcp-server/",
   "repository": {
     "url": "https://github.com/Realeyes/VerifEye-Mcp-Server",
