@@ -75,11 +75,11 @@ Every tool takes `region` (`eu` or `us`, `eu` by default), which selects where t
 | `verifeye_delete_face` | Deletes one onboarded face | **Irreversible** |
 | `verifeye_list_collections` | Lists the collections on the account, or checks whether one exists | No |
 | `verifeye_create_collection` | Creates an empty collection | No |
-| `verifeye_set_collection_description` | Replaces a collection's description | No |
+| `verifeye_set_collection_description` | Replaces a collection's description | Replaces the previous description |
 | `verifeye_reset_collection` | Deletes every face in a collection, keeping the collection | **Irreversible** |
 | `verifeye_delete_collection` | Deletes a collection and every face in it | **Irreversible** |
 | `verifeye_get_face_by_key` | Finds an onboarded face by your own identifier | No |
-| `verifeye_set_face_key` | Attaches your own identifier to an onboarded face | No |
+| `verifeye_set_face_key` | Attaches your own identifier to an onboarded face | Replaces the face's previous key |
 | `verifeye_delete_face_key` | Removes your identifier from an onboarded face | Loses the way of finding the face |
 | `verifeye_get_upload_url` | Hands back a short-lived form for uploading one image | No |
 
