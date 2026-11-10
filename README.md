@@ -45,7 +45,7 @@ Start the server from the **MCP: List Servers** command, then sign in when the b
 
 Once the server is connected and you have signed in, ask in plain language and the assistant picks the tools.
 
-**Give the image as a link.** The image tools take a public URL of a JPEG or PNG image, which VerifEye fetches itself. An image attached to the conversation cannot be passed to a tool, so put the image somewhere reachable and give the assistant that link. Prefer a pre-signed link that expires in minutes to a durably public URL. Where the server offers `verifeye_get_upload_url` and your client can make HTTPS requests of its own, the client can upload the image instead. Image requirements: [documentation](https://verifeye-docs.realeyes.ai/verifeye-apis/image-requirements/).
+**Give the image.** The image tools take a public URL of a JPEG or PNG image, which VerifEye fetches itself. In ChatGPT, an image attached to the conversation can be passed to a tool as well. In the Claude app and ChatGPT, `verifeye_pick_image` shows an image picker in the conversation, where you choose a file, paste an image, or take a photo where the host allows the camera; the image goes from your browser straight to VerifEye storage. In other clients an image attached to the conversation cannot be passed to a tool, so put the image somewhere reachable and give the assistant that link. Prefer a pre-signed link that expires in minutes to a durably public URL. Where the server offers `verifeye_get_upload_url` and your client can make HTTPS requests of its own, the client can upload the image instead. Image requirements: [documentation](https://verifeye-docs.realeyes.ai/verifeye-apis/image-requirements/).
 
 **Choose the region.** Every call runs in the EU (`eu`) unless you ask for the US (`us`). Collections are per region, so ask for the same region each time you work with a collection.
 
@@ -82,6 +82,7 @@ Every tool takes `region` (`eu` or `us`, `eu` by default), which selects where t
 | `verifeye_set_face_key` | Attaches your own identifier to an onboarded face | Replaces the face's previous key |
 | `verifeye_delete_face_key` | Removes your identifier from an onboarded face | Loses the way of finding the face |
 | `verifeye_get_upload_url` | Hands back a short-lived form for uploading one image | No |
+| `verifeye_pick_image` | Shows an image picker in the conversation, in the Claude app and ChatGPT | No |
 
 Parameters, results and error codes for each tool are in the [documentation](https://verifeye-docs.realeyes.ai/verifeye-apis/mcp-server/#available-tools).
 
