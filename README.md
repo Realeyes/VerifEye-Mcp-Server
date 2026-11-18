@@ -80,7 +80,7 @@ Every tool takes `region` (`eu` or `us`, `eu` by default), which selects where t
 | `verifeye_delete_collection` | Deletes a collection and every face in it | **Irreversible** |
 | `verifeye_get_face_by_key` | Finds an onboarded face by your own identifier | No |
 | `verifeye_set_face_key` | Attaches your own identifier to an onboarded face | Replaces the face's previous key |
-| `verifeye_delete_face_key` | Removes your identifier from an onboarded face | Loses the way of finding the face |
+| `verifeye_delete_face_key` | Removes your identifier from an onboarded face | Loses the way of finding the face by your identifier |
 | `verifeye_get_upload_url` | Hands back a short-lived form for uploading one image | No |
 | `verifeye_pick_image` | Shows an image picker in the conversation, in the Claude app and ChatGPT | No |
 
