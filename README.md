@@ -55,7 +55,7 @@ The image links are placeholders: use a link to your own image. Prompts 2 to 5 b
 
 | # | Prompt | What happens |
 |---|--------|--------------|
-| 1 | "Estimate the apparent age and gender of the face in https://example.com/photos/visitor.jpg." | `verifeye_identify_face` analyzes the face and returns the estimates. No face or image is stored. |
+| 1 | "Estimate the apparent age and gender of the face in https://example.com/photos/visitor.jpg." | `verifeye_identify_face` analyzes the face and returns the estimates. Nothing is onboarded; for the copy of the request that VerifEye's audit log keeps, see [Biometric data and consent](#biometric-data-and-consent). |
 | 2 | "Create a VerifEye collection called front-desk-visitors, then onboard the face in https://example.com/photos/visitor-1042.jpg into it with the external key visitor-1042." | `verifeye_create_collection` creates the collection, and `verifeye_onboard_face` stores the face template with that key. Onboarding stores biometric data: see [Biometric data and consent](#biometric-data-and-consent). |
 | 3 | "Is the person in https://example.com/photos/today.jpg already in my front-desk-visitors collection?" | `verifeye_identify_face` with that collection answers `Existing`, with the `faceId` and the key, when the photo shows the person onboarded in prompt 2, and `NotExisting` for anyone else. Nothing is onboarded. |
 | 4 | "Compare the face in https://example.com/photos/check-in.jpg with visitor-1042 in front-desk-visitors." | `verifeye_get_face_by_key` finds the `faceId`, and `verifeye_compare_face` returns the similarity and VerifEye's `isMatch` verdict. |
@@ -84,11 +84,15 @@ Every tool takes `region` (`eu` or `us`, `eu` by default), which selects where t
 | `verifeye_get_upload_url` | Hands back a short-lived form for uploading one image | No |
 | `verifeye_pick_image` | Shows an image picker in the conversation, in the Claude app and ChatGPT | No |
 
+The last column is about what a call changes on your account. Apart from that, VerifEye's audit log keeps a copy of each request, and VerifEye keeps the image a face template is created from: see [Biometric data and consent](#biometric-data-and-consent).
+
 Parameters, results and error codes for each tool are in the [documentation](https://verifeye-docs.realeyes.ai/verifeye-apis/mcp-server/#available-tools).
 
 ## Biometric data and consent
 
 These tools process facial (biometric) data. You are responsible for obtaining valid, informed consent before a call runs, and for meeting the privacy and biometric-data regulations that apply to the people in your images (for example GDPR, BIPA and CCPA).
+
+What VerifEye keeps: unless your account has asked VerifEye to turn the audit log off, VerifEye's audit log keeps a copy of each request, including the image and the faces detected in it, for 30 days. Unless your account has asked VerifEye not to, when `verifeye_onboard_face` creates a face template, VerifEye keeps the image it was created from for as long as the template. An uploaded image itself is deleted as set out under [Providing the image](https://verifeye-docs.realeyes.ai/verifeye-apis/mcp-server/#providing-the-image) in the documentation.
 
 - `verifeye_onboard_face` stores a face template that persists until it is deleted.
 - `verifeye_delete_face`, `verifeye_reset_collection` and `verifeye_delete_collection` destroy face templates permanently.
