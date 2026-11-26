@@ -76,6 +76,7 @@ Every tool takes `region` (`eu` or `us`, `eu` by default), which selects where t
 | `verifeye_list_collections` | Lists the collections on the account, or checks whether one exists | No |
 | `verifeye_create_collection` | Creates an empty collection | No |
 | `verifeye_set_collection_description` | Replaces a collection's description | Replaces the previous description |
+| `verifeye_set_collection_retention` | Sets how many days (1-365) a face onboarded into a collection from now on stays usable after its last use | Replaces the collection's previous retention |
 | `verifeye_reset_collection` | Deletes every face in a collection, keeping the collection | **Irreversible** |
 | `verifeye_delete_collection` | Deletes a collection and every face in it | **Irreversible** |
 | `verifeye_get_face_by_key` | Finds an onboarded face by your own identifier | No |
@@ -94,7 +95,7 @@ These tools process facial (biometric) data. You are responsible for obtaining v
 
 What VerifEye keeps: unless your account has asked VerifEye to turn the audit log off, VerifEye's audit log keeps a copy of each request, including the image and the faces detected in it, for 30 days. Unless your account has asked VerifEye not to, when `verifeye_onboard_face` creates a face template, VerifEye keeps the image it was created from for as long as the template. An uploaded image itself is deleted as set out under [Providing the image](https://verifeye-docs.realeyes.ai/verifeye-apis/mcp-server/#providing-the-image) in the documentation.
 
-- `verifeye_onboard_face` stores a face template that persists until it is deleted.
+- `verifeye_onboard_face` stores a face template that is kept until it is deleted or its retention ends, 365 days after its last use unless another retention is set.
 - `verifeye_delete_face`, `verifeye_reset_collection` and `verifeye_delete_collection` destroy face templates permanently.
 - Age is an apparent-age estimate, not a legal proof of age. Gender is a demographic estimate, not a self-declared identity attribute. A face match is evidence of similarity, not an identity check on its own.
 - Tool calls run as your VerifEye account and count against your account's usage limits.
